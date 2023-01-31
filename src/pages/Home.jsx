@@ -30,8 +30,8 @@ function Home({
         <img src="img/banner.png" alt="banner" />
       </div>
 
-      <div className="content p-40">
-        <div className="d-flex align-center justify-between mb-40">
+      <div className="content home">
+        <div className="d-flex align-center justify-between mb-40 homenav">
           <h1>
             {searchValue
               ? `Поиск по запросу: "${searchValue}"`
@@ -55,7 +55,7 @@ function Home({
           </div>
         </div>
 
-        <div className="d-flex flex-wrap">{renderItems()}</div>
+        <div className="d-flex flex-wrap cards">{renderItems()}</div>
       </div>
     </>
   );

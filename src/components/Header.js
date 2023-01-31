@@ -6,7 +6,7 @@ import { useCart } from "../hooks/useCart";
 function Header(props) {
   const { totalPrice } = useCart();
   return (
-    <header className="d-flex justify-between align-center p-40">
+    <header className="d-flex justify-between align-center p-40 header">
       <Link to="/">
         <div className="d-flex align-center">
           <img width={40} height={40} src="img/logo.png" alt="logo" />
@@ -17,12 +17,12 @@ function Header(props) {
         </div>
       </Link>
 
-      <ul className="d-flex">
-        <li onClick={props.onClickCart} className="mr-30 cu-p">
-          <img width={20} height={20} src="img/cart.svg" alt="Корзина" />
+      <ul className="d-flex headerUl">
+        <li onClick={props.onClickCart} className="headerLi cu-p">
+          <img width={20} height={20} src="img/cart.svg" alt="Корзина" className="cart" />
           <span>{totalPrice} руб.</span>
         </li>
-        <li className="mr-20 cu-p">
+        <li className=" cu-p headerLi">
           <Link to="/favourites">
             <img width={20} height={20} src="img/heart.svg" alt="Закладки" />
           </Link>
@@ -30,7 +30,7 @@ function Header(props) {
             <img
               width={20}
               height={20}
-              src="img/user.svg"
+              src="/img/user.svg"
               alt="Пользователь"
             />
           </Link>

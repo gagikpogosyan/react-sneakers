@@ -36,3 +36,9 @@
     font-size: 14px;
   }
 }
+
+@media (max-width: 960px) {
+  .card {
+    margin-right: 0;
+  }
+}

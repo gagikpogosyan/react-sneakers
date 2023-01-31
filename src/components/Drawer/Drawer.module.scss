@@ -44,3 +44,9 @@
     flex: 1;
   }
 }
+
+@media(max-width: 650px ) {
+  .drawer {
+    width: 100%;
+  }
+}
