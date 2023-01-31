@@ -25,31 +25,39 @@ function Home({
     ));
   };
   return (
-    <div className="content p-40">
-      <div className="d-flex align-center justify-between mb-40">
-        <h1>
-          {searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}
-        </h1>
-        <div className="search-block d-flex">
-          <img src="img/search.svg" alt="Search" />
-          {searchValue && (
-            <img
-              onClick={() => setSearchValue("")}
-              className="clear cu-p"
-              src="img/btn-remove.svg"
-              alt="Clear"
-            />
-          )}
-          <input
-            onChange={onChangeSearchInput}
-            value={searchValue}
-            placeholder="Поиск..."
-          />
-        </div>
+    <>
+      <div className="banner">
+        <img src="img/banner.png" alt="banner" />
       </div>
 
-      <div className="d-flex flex-wrap">{renderItems()}</div>
-    </div>
+      <div className="content p-40">
+        <div className="d-flex align-center justify-between mb-40">
+          <h1>
+            {searchValue
+              ? `Поиск по запросу: "${searchValue}"`
+              : "Все кроссовки"}
+          </h1>
+          <div className="search-block d-flex">
+            <img src="img/search.svg" alt="Search" />
+            {searchValue && (
+              <img
+                onClick={() => setSearchValue("")}
+                className="clear cu-p"
+                src="img/btn-remove.svg"
+                alt="Clear"
+              />
+            )}
+            <input
+              onChange={onChangeSearchInput}
+              value={searchValue}
+              placeholder="Поиск..."
+            />
+          </div>
+        </div>
+
+        <div className="d-flex flex-wrap">{renderItems()}</div>
+      </div>
+    </>
   );
 }
 
