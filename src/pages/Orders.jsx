@@ -1,6 +1,8 @@
 import React from "react";
-import Card from "../components/Card";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+import Card from "../components/Card";
 
 function Orders() {
   const [orders, setOrders] = React.useState([]);
@@ -27,11 +29,25 @@ function Orders() {
         <h1>Мои заказы</h1>
       </div>
 
-      <div className="d-flex flex-wrap">
-        {(isLoading ? [...Array(8)] : orders).map((item, index) => (
-          <Card key={index} {...item} loading={isLoading} />
-        ))}
-      </div>
+      {orders.length > 0 ? (
+        <div className="d-flex flex-wrap">
+          {(isLoading ? [...Array(8)] : orders).map((item, index) => (
+            <Card key={index} {...item} loading={isLoading} />
+          ))}
+        </div>
+      ) : (
+        <div className="empty">
+          <img src="img/dreary-smile.png" alt="dreary-smile" className="smile" />
+          <h2>У вас нет заказов</h2>
+          <p>Оформите хотя бы один заказ.</p>
+          <Link to="/">
+            <button className="greenButton">
+              <img src="img/arrow.svg" alt="Arrow" />
+              Вернуться назад
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

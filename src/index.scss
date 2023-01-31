@@ -199,12 +199,12 @@ header {
   }
 }
 
-.emptyFavorites {
+.empty {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .sad-smile {
+  .smile {
     margin-top: 20px;
     margin-bottom: 10px;
   }

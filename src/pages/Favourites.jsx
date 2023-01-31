@@ -25,8 +25,8 @@ function Favourites({ onAddToFavourite }) {
           ))}
         </div>
       ) : (
-        <div className="emptyFavorites">
-          <img src="/img/sad-smile.png" alt="sad-smile" className="sad-smile" />
+        <div className="empty">
+          <img src="img/sad-smile.png" alt="sad-smile" className="smile" />
           <h2>Закладок нет :( </h2>
           <p>Вы ничего не добавляли в закладки</p>
           <Link to="/">
