@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import Card from "../components/Card";
 import AppContext from "../context";
 
@@ -11,16 +13,30 @@ function Favourites({ onAddToFavourite }) {
         <h1>Мои закладки</h1>
       </div>
 
-      <div className="d-flex flex-wrap">
-        {favourites.map((item, index) => (
-          <Card
-            key={index}
-            favourited={true}
-            onFavourite={onAddToFavourite}
-            {...item}
-          />
-        ))}
-      </div>
+      {favourites.length > 0 ? (
+        <div className="d-flex flex-wrap">
+          {favourites.map((item, index) => (
+            <Card
+              key={index}
+              favourited={true}
+              onFavourite={onAddToFavourite}
+              {...item}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="emptyFavorites">
+          <img src="/img/sad-smile.png" alt="sad-smile" className="sad-smile" />
+          <h2>Закладок нет :( </h2>
+          <p>Вы ничего не добавляли в закладки</p>
+          <Link to="/">
+            <button className="greenButton">
+              <img src="img/arrow.svg" alt="Arrow" />
+              Вернуться назад
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
