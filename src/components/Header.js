@@ -19,7 +19,13 @@ function Header(props) {
 
       <ul className="d-flex headerUl">
         <li onClick={props.onClickCart} className="headerLi cu-p">
-          <img width={20} height={20} src="img/cart.svg" alt="Корзина" className="cart" />
+          <img
+            width={20}
+            height={20}
+            src="img/cart.svg"
+            alt="Корзина"
+            className="cart"
+          />
           <span>{totalPrice} руб.</span>
         </li>
         <li className=" cu-p headerLi">
@@ -27,12 +33,7 @@ function Header(props) {
             <img width={20} height={20} src="img/heart.svg" alt="Закладки" />
           </Link>
           <Link to="/orders">
-            <img
-              width={20}
-              height={20}
-              src="/img/user.svg"
-              alt="Пользователь"
-            />
+            <img width={20} height={20} src="img/user.svg" alt="Пользователь" />
           </Link>
         </li>
       </ul>
