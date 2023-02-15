@@ -89,22 +89,36 @@ function App() {
 
   const onAddToFavourite = async (obj) => {
     try {
-      if (favourites.find((favObj) => Number(favObj.id) === Number(obj.id))) {
-        axios.delete(
-          `https://639e22193542a26130578fa5.mockapi.io/favourites/${obj.id}`
-        );
+      const findFavourite = favourites.find(
+        (item) => Number(item.parentId) === Number(obj.id)
+      );
+      if (findFavourite) {
         setFavourites((prev) =>
-          prev.filter((item) => Number(item.id) !== Number(obj.id))
+          prev.filter((item) => Number(item.parentId) !== Number(obj.id))
+        );
+        await axios.delete(
+          `https://639e22193542a26130578fa5.mockapi.io/favourites/${findFavourite.id}`
         );
       } else {
+        setFavourites((prev) => [...prev, obj]);
         const { data } = await axios.post(
           "https://639e22193542a26130578fa5.mockapi.io/favourites",
           obj
         );
-        setFavourites((prev) => [...prev, data]);
+        setFavourites((prev) =>
+          prev.map((item) => {
+            if (item.parentId === data.parentId) {
+              return {
+                ...item,
+                id: data.id,
+              };
+            }
+            return item;
+          })
+        );
       }
     } catch (error) {
-      alert("Не удалось добавить в закладки");
+      alert("Ошибка при добавлении в закладки");
       console.error(error);
     }
   };
@@ -117,6 +131,10 @@ function App() {
     return cartItems.some((obj) => Number(obj.parentId) === Number(id));
   };
 
+  const isFavouriteAdded = (id) => {
+    return favourites.some((obj) => Number(obj.parentId) === Number(id));
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -124,6 +142,7 @@ function App() {
         items,
         favourites,
         isItemAdded,
+        isFavouriteAdded,
         setCartOpened,
         setCartItems,
         onAddToCart,
